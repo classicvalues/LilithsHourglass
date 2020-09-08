@@ -1,5 +1,12 @@
 import time
 
+#Constant variables
+
+
+#Database functions
+
+
+#Pomodoro functions
 def clock(minutes):
 	time_start=time.perf_counter()
 	
@@ -16,3 +23,5 @@ def clock(minutes):
 def showTime(time_left):
 	time_converted=time.strftime("%M:%S", time.gmtime(time_left))
 	print(f"Time left: {time_converted}\r", end="\r")
+
+#UI
