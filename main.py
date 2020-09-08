@@ -11,7 +11,7 @@ pomodoro_break=5
 
 #System functions
 def play(sound):
-	if sound=="pomodoro"
+	if sound=="pomodoro":
 		playsound("sounds/finish")
 	elif sounds=="break":
 		playsound("sounds/bfinish")
