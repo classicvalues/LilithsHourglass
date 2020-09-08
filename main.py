@@ -58,7 +58,7 @@ while True:
 		print(f"Your new break time is {pomodoro_break}")
 	
 	elif option=="5":
-		print(f"pomodoro time={pomodoro_minutes}\nbreak time={pomodoro_break}\nPress enter to exit.")
+		print(f"pomodoro time:\t{pomodoro_minutes}\nbreak time:\t{pomodoro_break}\nPress enter to exit.")
 		input()
 		clear()
 
