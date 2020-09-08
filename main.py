@@ -1,4 +1,5 @@
 import time
+import datetime
 
 def clock(minutes):
 	time_start=time.perf_counter()
@@ -10,4 +11,9 @@ def clock(minutes):
 			print('Pomodoro Finished')
 			break
 
+		showTime(time_left)
 		time.sleep(1)
+
+def showTime(time_left):
+	time_converted=time.strftime("%M:%S", time.gmtime(time_left))
+	print(f"Time left: {time_converted}\r", end="\r")
