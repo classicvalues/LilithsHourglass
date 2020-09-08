@@ -10,6 +10,12 @@ pomodoro_minutes=25
 pomodoro_break=5
 
 #System functions
+def play(sound):
+	if sound=="pomodoro"
+		playsound("sounds/finish")
+	elif sounds=="break":
+		playsound("sounds/bfinish")
+
 clear=lambda: os.system('cls')
 #if UNIX use clear instead of cls
 
