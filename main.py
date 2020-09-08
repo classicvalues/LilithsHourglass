@@ -1,7 +1,12 @@
 import time
 
 #Constant variables
+pomodoro_minutes=25
+pomodoro_break=5
 
+#System functions
+clear=lambda: os.system('cls')
+#if UNIX use clear instead of cls
 
 #Database functions
 
