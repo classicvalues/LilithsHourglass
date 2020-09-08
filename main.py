@@ -1,5 +1,4 @@
 import time
-import datetime
 
 def clock(minutes):
 	time_start=time.perf_counter()
