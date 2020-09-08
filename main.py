@@ -1,4 +1,5 @@
 import time
+import os
 
 #Constant variables
 pomodoro_minutes=25
