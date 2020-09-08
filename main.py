@@ -61,3 +61,5 @@ while True:
 
 	else:
 		print(f'"{option}" is not an option')
+		print("Press Enter to exit.")
+		input()
