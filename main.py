@@ -1,4 +1,5 @@
 import time
+import os
 
 #Constant variables
 
@@ -35,10 +36,11 @@ def showTime(time_left):
 #UI
 while True:
 	option=input("1. Start pomodoro\n2. Start break\n3. Change pomodoro time\n4. Change pomodoro break time\n")
+	clear()
 	
 	if option=="1":
 		clock(pomodoro_minutes)
-	
+		
 	elif option=="2":
 		clock(pomodoro_break)
 	
