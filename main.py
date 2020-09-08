@@ -1,6 +1,10 @@
 import time
 import datetime
 
+#Constant variables
+
+
+#Main program functions
 def clock(minutes):
 	time_start=time.perf_counter()
 	
