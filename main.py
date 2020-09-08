@@ -2,6 +2,9 @@ import time
 import os
 
 #Constant variables
+
+
+#Pomodoro settings
 pomodoro_minutes=25
 pomodoro_break=5
 
@@ -31,3 +34,38 @@ def showTime(time_left):
 	print(f"Time left: {time_converted}\r", end="\r")
 
 #UI
+while True:
+	option=input("1. Start pomodoro\n2. Start break\n3. Change pomodoro time\n4. Change pomodoro break time\n5. Show current settings\n\nPress 0 to exit program\n")
+	clear()
+
+	if option=='0':
+		break
+
+	elif option=="1":
+		clock(pomodoro_minutes)
+		
+	elif option=="2":
+		clock(pomodoro_break)
+	
+	elif option=="3":
+		pomodoro_new_time=input("Insert your new pomodoro time\n")
+		pomodoro_minutes=int(pomodoro_new_time)
+		print(f"Your new break time is {pomodoro_minutes}")
+	
+	elif option=="4":
+		pomodoro_new_break=input("Insert your new break time\n")
+		pomodoro_break=int(pomodoro_new_break)
+		print(f"Your new break time is {pomodoro_break}")
+	
+	elif option=="5":
+		print(f"pomodoro time={pomodoro_minutes}\nbreak time={pomodoro_break}\nPress enter to exit.")
+		input()
+		clear()
+
+	else:
+		print(f'"{option}" is not an option')
+		print("Press Enter to exit.")
+		input()
+
+print("Press enter to exit")
+input()
