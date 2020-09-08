@@ -35,10 +35,13 @@ def showTime(time_left):
 
 #UI
 while True:
-	option=input("1. Start pomodoro\n2. Start break\n3. Change pomodoro time\n4. Change pomodoro break time\n5. Show current settings\n")
+	option=input("1. Start pomodoro\n2. Start break\n3. Change pomodoro time\n4. Change pomodoro break time\n5. Show current settings\n\nPress 0 to exit program\n")
 	clear()
-	
-	if option=="1":
+
+	if option=='0':
+		break
+
+	elif option=="1":
 		clock(pomodoro_minutes)
 		
 	elif option=="2":
@@ -63,3 +66,6 @@ while True:
 		print(f'"{option}" is not an option')
 		print("Press Enter to exit.")
 		input()
+
+print("Press enter to exit")
+input()
