@@ -13,7 +13,7 @@ pomodoro_break=5
 def play(sound):
 	if sound=="pomodoro":
 		playsound("sounds/finish.wav")
-	elif sounds=="break":
+	elif sound=="break":
 		playsound("sounds/bfinish.wav")
 
 clear=lambda: os.system('cls')
