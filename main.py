@@ -12,9 +12,9 @@ pomodoro_break=5
 #System functions
 def play(sound):
 	if sound=="pomodoro":
-		playsound("sounds/finish")
+		playsound("sounds/finish.wav")
 	elif sounds=="break":
-		playsound("sounds/bfinish")
+		playsound("sounds/bfinish.wav")
 
 clear=lambda: os.system('cls')
 #if UNIX use clear instead of cls
@@ -23,7 +23,7 @@ clear=lambda: os.system('cls')
 
 
 #Pomodoro functions
-def clock(minutes):
+def clock(minutes, isBreak):
 	time_start=time.perf_counter()
 	
 	while True:
@@ -35,6 +35,11 @@ def clock(minutes):
 
 		showTime(time_left)
 		time.sleep(1)
+	
+	if isBreak:
+		play("break")
+	else:
+		play("pomodoro")
 
 def showTime(time_left):
 	time_converted=time.strftime("%M:%S", time.gmtime(time_left))
@@ -49,10 +54,10 @@ while True:
 		break
 
 	elif option=="1":
-		clock(pomodoro_minutes)
+		clock(pomodoro_minutes, False)
 		
 	elif option=="2":
-		clock(pomodoro_break)
+		clock(pomodoro_break, True)
 	
 	elif option=="3":
 		pomodoro_new_time=input("Insert your new pomodoro time\n")
