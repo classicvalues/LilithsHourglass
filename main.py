@@ -15,6 +15,10 @@ def play(sound):
 		playsound("sounds/finish.wav")
 	elif sound=="break":
 		playsound("sounds/bfinish.wav")
+	elif sound=="pStart":
+		playsound("sounds/start.wav")
+	elif sound=="bStart":
+		playsound("sounds/bstart.wav")
 
 clear=lambda: os.system('cls')
 #if UNIX use clear instead of cls
@@ -24,6 +28,11 @@ clear=lambda: os.system('cls')
 
 #Pomodoro functions
 def clock(minutes, isBreak):
+	if isBreak:
+		play("bStart")
+	else:
+		play("pStart")
+
 	time_start=time.perf_counter()
 	
 	while True:
