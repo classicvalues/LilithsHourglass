@@ -11,6 +11,7 @@ pomodoro_break=5
 pomodoro_break_long=30
 pomodoro_count=0
 isBreak=False
+pomo_or_break="pomodoro"
 
 #System functions
 def play(sound):
@@ -79,7 +80,11 @@ def showTime(time_left):
 #UI
 while True:
 	print(f"Pomodoros left for long break: {4-pomodoro_count}")
-	option=input("1. Start pomodoro\n2. Start break\n3. Change pomodoro time\n4. Change pomodoro break time\n5. Show current settings\n\nPress 0 to exit program\n")
+	if isBreak:
+		pomo_or_break="break"
+	else:
+		pomo_or_break="pomodoro"
+	option=input(f"1. Start {pomo_or_break}\n\nPress 0 to exit program\n")
 	clear()
 
 	if option=='0':
@@ -87,24 +92,6 @@ while True:
 
 	elif option=="1":
 		clock()
-		
-	elif option=="2":
-		clock(pomodoro_break, True)
-	
-	elif option=="3":
-		pomodoro_new_time=input("Insert your new pomodoro time\n")
-		pomodoro_minutes=int(pomodoro_new_time)
-		print(f"Your new break time is {pomodoro_minutes}")
-	
-	elif option=="4":
-		pomodoro_new_break=input("Insert your new break time\n")
-		pomodoro_break=int(pomodoro_new_break)
-		print(f"Your new break time is {pomodoro_break}")
-	
-	elif option=="5":
-		print(f"pomodoro time:\t{pomodoro_minutes}\nbreak time:\t{pomodoro_break}\nPress enter to exit.")
-		input()
-		clear()
 
 	else:
 		print(f'"{option}" is not an option')
