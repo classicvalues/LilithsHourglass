@@ -8,6 +8,8 @@ from playsound import playsound
 #Pomodoro settings
 pomodoro_minutes=25
 pomodoro_break=5
+pomodoro_break_long=30
+pomodoro_count=0
 
 #System functions
 def play(sound):
