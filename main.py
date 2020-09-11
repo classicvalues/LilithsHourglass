@@ -1,13 +1,38 @@
 import time
+import os
+from playsound import playsound
 
 #Constant variables
 
+
+#Pomodoro settings
+pomodoro_minutes=25
+pomodoro_break=5
+
+#System functions
+def play(sound):
+	if sound=="pomodoro":
+		playsound("sounds/finish.wav")
+	elif sound=="break":
+		playsound("sounds/bfinish.wav")
+	elif sound=="pStart":
+		playsound("sounds/start.wav")
+	elif sound=="bStart":
+		playsound("sounds/bstart.wav")
+
+clear=lambda: os.system('cls')
+#if UNIX use clear instead of cls
 
 #Database functions
 
 
 #Pomodoro functions
-def clock(minutes):
+def clock(minutes, isBreak):
+	if isBreak:
+		play("bStart")
+	else:
+		play("pStart")
+
 	time_start=time.perf_counter()
 	
 	while True:
@@ -19,9 +44,49 @@ def clock(minutes):
 
 		showTime(time_left)
 		time.sleep(1)
+	
+	if isBreak:
+		play("break")
+	else:
+		play("pomodoro")
 
 def showTime(time_left):
 	time_converted=time.strftime("%M:%S", time.gmtime(time_left))
 	print(f"Time left: {time_converted}\r", end="\r")
 
 #UI
+while True:
+	option=input("1. Start pomodoro\n2. Start break\n3. Change pomodoro time\n4. Change pomodoro break time\n5. Show current settings\n\nPress 0 to exit program\n")
+	clear()
+
+	if option=='0':
+		break
+
+	elif option=="1":
+		clock(pomodoro_minutes, False)
+		
+	elif option=="2":
+		clock(pomodoro_break, True)
+	
+	elif option=="3":
+		pomodoro_new_time=input("Insert your new pomodoro time\n")
+		pomodoro_minutes=int(pomodoro_new_time)
+		print(f"Your new break time is {pomodoro_minutes}")
+	
+	elif option=="4":
+		pomodoro_new_break=input("Insert your new break time\n")
+		pomodoro_break=int(pomodoro_new_break)
+		print(f"Your new break time is {pomodoro_break}")
+	
+	elif option=="5":
+		print(f"pomodoro time:\t{pomodoro_minutes}\nbreak time:\t{pomodoro_break}\nPress enter to exit.")
+		input()
+		clear()
+
+	else:
+		print(f'"{option}" is not an option')
+		print("Press Enter to exit.")
+		input()
+
+print("Press enter to exit")
+input()
