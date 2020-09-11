@@ -10,6 +10,7 @@ pomodoro_minutes=25
 pomodoro_break=5
 pomodoro_break_long=30
 pomodoro_count=0
+isBreak=False
 
 #System functions
 def play(sound):
@@ -29,10 +30,19 @@ clear=lambda: os.system('cls')
 
 
 #Pomodoro functions
-def clock(minutes, isBreak):
+def clock():
+	global isBreak
+	global pomodoro_count
+	minutes = 0
+	
 	if isBreak:
+		if pomodoro_count == 4:
+			minutes=pomodoro_break_long
+		else:
+			minutes=pomodoro_break	
 		play("bStart")
 	else:
+		minutes=pomodoro_minutes
 		play("pStart")
 
 	time_start=time.perf_counter()
@@ -41,7 +51,7 @@ def clock(minutes, isBreak):
 		time_diff=int(round(time.perf_counter()-time_start))
 		time_left=minutes*60-time_diff
 		if time_left <= 0:
-			print('Pomodoro Finished')
+			print('')
 			break
 
 		showTime(time_left)
@@ -49,15 +59,26 @@ def clock(minutes, isBreak):
 	
 	if isBreak:
 		play("break")
+		if pomodoro_count==4:
+			pomodoro_count=0
+			print("You've finished your long break!")
+		else:
+			pomodoro_count+=1
+			print("You've finished your break!")
+		isBreak=False
 	else:
 		play("pomodoro")
+		print("You've finished your pomodoro!")
+		isBreak=True
 
 def showTime(time_left):
+	time_left-=1
 	time_converted=time.strftime("%M:%S", time.gmtime(time_left))
 	print(f"Time left: {time_converted}\r", end="\r")
 
 #UI
 while True:
+	print(f"Pomodoros left for long break: {4-pomodoro_count}")
 	option=input("1. Start pomodoro\n2. Start break\n3. Change pomodoro time\n4. Change pomodoro break time\n5. Show current settings\n\nPress 0 to exit program\n")
 	clear()
 
@@ -65,7 +86,7 @@ while True:
 		break
 
 	elif option=="1":
-		clock(pomodoro_minutes, False)
+		clock()
 		
 	elif option=="2":
 		clock(pomodoro_break, True)
