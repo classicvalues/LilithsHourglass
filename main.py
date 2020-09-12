@@ -18,13 +18,13 @@ def play(sound):
 	soundFilePath=''
 	
 	if sound=="pomodoro":
-		soundFilePath="sounds/finish.wav"
+		soundFilePath="sounds/finish.wav" #pomodoro sound
 	elif sound=="break":
-		soundFilePath="sounds/bfinish.wav"
+		soundFilePath="sounds/bfinish.wav" #break sound
 	elif sound=="pStart":
-		soundFilePath="sounds/start.wav"
+		soundFilePath="sounds/start.wav" #pomodoro start sound
 	elif sound=="bStart":
-		soundFilePath="sounds/bstart.wav"
+		soundFilePath="sounds/bstart.wav" #break start sound
 	
 	playsound(soundFilePath, False)
 
