@@ -77,14 +77,18 @@ def showTime(time_left):
 	time_converted=time.strftime("%M:%S", time.gmtime(time_left))
 	print(f"Time left: {time_converted}\r", end="\r")
 
+#Program start functions
+clear() #To have a clean console at the start
+
 #UI
-clear()
 while True:
 	print(f"Pomodoros left for long break: {4-pomodoro_count}")
+	
 	if isBreak:
 		pomo_or_break="break"
 	else:
 		pomo_or_break="pomodoro"
+	
 	option=input(f"1. Start {pomo_or_break}\n\nPress 0 to exit program\n")
 	clear()
 
