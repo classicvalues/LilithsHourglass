@@ -78,6 +78,7 @@ def showTime(time_left):
 	print(f"Time left: {time_converted}\r", end="\r")
 
 #UI
+clear()
 while True:
 	print(f"Pomodoros left for long break: {4-pomodoro_count}")
 	if isBreak:
