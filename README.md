@@ -1,2 +1,2 @@
 # LilithHourglass
- (not only)A pomodoro. that's it.
+ (not only) A pomodoro. that's it.
