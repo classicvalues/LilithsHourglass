@@ -2,9 +2,6 @@ import time
 import os
 from playsound import playsound
 
-#Constant variables
-
-
 #Pomodoro settings
 pomodoro_minutes=25
 pomodoro_break=5
@@ -30,9 +27,6 @@ def play(sound):
 
 clear=lambda: os.system('cls')
 #if UNIX use clear instead of cls
-
-#Database functions
-
 
 #Pomodoro functions
 def clock():
