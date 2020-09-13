@@ -15,14 +15,18 @@ pomo_or_break="pomodoro"
 
 #System functions
 def play(sound):
+	soundFilePath=''
+	
 	if sound=="pomodoro":
-		playsound("sounds/finish.wav")
+		soundFilePath="sounds/finish.wav" #pomodoro sound
 	elif sound=="break":
-		playsound("sounds/bfinish.wav")
+		soundFilePath="sounds/bfinish.wav" #break sound
 	elif sound=="pStart":
-		playsound("sounds/start.wav")
+		soundFilePath="sounds/start.wav" #pomodoro start sound
 	elif sound=="bStart":
-		playsound("sounds/bstart.wav")
+		soundFilePath="sounds/bstart.wav" #break start sound
+	
+	playsound(soundFilePath, False)
 
 clear=lambda: os.system('cls')
 #if UNIX use clear instead of cls
