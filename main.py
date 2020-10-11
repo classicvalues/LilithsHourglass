@@ -4,11 +4,24 @@ from playsound import playsound
 
 #Constant variables
 
+#Pomodoro factory
+class Pomodoro:
+	def __init__(self, minutes, minutes_break, minutes_break_long):
+		self.minutes = minutes
+		self.minutes_break = minutes_break
+		self.minutes_break_long = minutes_break_long
+
+	def printSettings(self):
+		print(F"your current settings are:\nminutes: {self.minutes}\nbreak: {self.minutes_break}\nlong break: {self.minutes_break_long}")
+
 
 #Pomodoro settings
-pomodoro_minutes=25
-pomodoro_break=5
-pomodoro_break_long=30
+pomodoroDefault = Pomodoro(25, 5, 30)
+'''
+pomodoro minutes=25
+pomodoro break=5
+pomodoro break long=30
+'''
 
 #Quality of life variables
 pomodoro_count=0
@@ -37,19 +50,19 @@ clear=lambda: os.system('cls')
 
 
 #Pomodoro functions
-def clock():
+def clock(pomo):
 	global isBreak
 	global pomodoro_count
 	minutes = 0
 	
 	if isBreak:
 		if pomodoro_count == 4:
-			minutes=pomodoro_break_long
+			minutes=pomo.minutes_break_long
 		else:
-			minutes=pomodoro_break	
+			minutes=pomo.minutes_break
 		play("bStart")
 	else:
-		minutes=pomodoro_minutes
+		minutes=pomo.minutes
 		play("pStart")
 
 	time_start=time.perf_counter()
@@ -95,14 +108,19 @@ while True:
 	else:
 		pomo_or_break="pomodoro"
 	
-	option=input(f"1. Start {pomo_or_break}\n\nPress 0 to exit program\n")
+	option=input(f"1. Start {pomo_or_break}\n2. Show settings\n\nPress 0 to exit program\n")
 	clear()
 
 	if option=='0':
 		break
 
 	elif option=="1":
-		clock()
+		clock(pomodoroDefault)
+
+	elif option=="2":
+		pomodoroDefault.printSettings()
+		input()
+		clear()
 
 	else:
 		print(f'"{option}" is not an option')
