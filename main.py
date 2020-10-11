@@ -9,6 +9,8 @@ from playsound import playsound
 pomodoro_minutes=25
 pomodoro_break=5
 pomodoro_break_long=30
+
+#Quality of life variables
 pomodoro_count=0
 isBreak=False
 pomo_or_break="pomodoro"
