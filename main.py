@@ -112,6 +112,8 @@ while True:
 	clear()
 
 	if option=='0':
+		print("Press enter to exit")
+		input()
 		break
 
 	elif option=="1":
@@ -126,6 +128,3 @@ while True:
 		print(f'"{option}" is not an option')
 		print("Press Enter to exit.")
 		input()
-
-print("Press enter to exit")
-input()
