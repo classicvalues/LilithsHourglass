@@ -1,1 +1,4 @@
-Add a license
+[ ] Add a license
+[ ] Clean code
+[ ] Get a logo
+[ ] Implement a GUI
