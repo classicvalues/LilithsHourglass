@@ -2,3 +2,4 @@
 [ ] Clean code
 [ ] Get a logo
 [ ] Implement a GUI
+[ ] Add better sounds
