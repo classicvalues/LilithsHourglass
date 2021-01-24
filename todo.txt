@@ -3,3 +3,5 @@
 [ ] Get a logo
 [ ] Implement a GUI
 [ ] Add better sounds
+[ ] Add option to set tasks
+[ ] Add a system that shows how many time you've spent in doing tasks
