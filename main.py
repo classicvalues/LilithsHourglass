@@ -6,6 +6,9 @@ from playsound import playsound
 
 #Pomodoro factory
 class Pomodoro:
+	'''
+	Pomodoro class that takes settings used for pomodoros (pomodoro time, break time, long break time)
+	'''
 	def __init__(self, minutes, minutes_break, minutes_break_long):
 		self.minutes = minutes
 		self.minutes_break = minutes_break
@@ -30,6 +33,9 @@ pomo_or_break="pomodoro"
 
 #System functions
 def play(sound):
+	'''
+	Function that makes the sound when pomodoros and breaks are started or finished
+	'''
 	soundFilePath=''
 	
 	if sound=="pomodoro":
@@ -51,6 +57,9 @@ clear=lambda: os.system('cls')
 
 #Pomodoro functions
 def clock(pomo):
+	'''
+	Clock function that takes settings and makes a pomodoro according to the given settings
+	'''
 	global isBreak
 	global pomodoro_count
 	minutes = 0
@@ -92,6 +101,9 @@ def clock(pomo):
 		isBreak=True
 
 def showTime(time_left):
+	'''
+	Function prints time left
+	'''
 	time_left-=1
 	time_converted=time.strftime("%M:%S", time.gmtime(time_left))
 	print(f"Time left: {time_converted}\r", end="\r")
@@ -99,7 +111,7 @@ def showTime(time_left):
 #Program start functions
 clear() #To have a clean console at the start
 
-#UI
+#CUI
 while True:
 	print(f"Pomodoros left for long break: {4-pomodoro_count}")
 	
