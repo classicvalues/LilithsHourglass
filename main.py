@@ -1,6 +1,7 @@
 import time
 import os
 from playsound import playsound
+import tkinter
 
 #Pomodoro settings
 pomodoro_minutes=25
