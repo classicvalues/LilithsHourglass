@@ -85,6 +85,8 @@ clear() #To have a clean console at the start
 
 #GUI
 window = tkinter.Tk()
+
+#Window geometry/size/resolution
 window.geometry(f"{width}x{height}")
 window.maxsize(width, height)
 window.minsize(width, height)
