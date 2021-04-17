@@ -79,28 +79,8 @@ def showTime(time_left):
 #Program start functions
 clear() #To have a clean console at the start
 
-#UI
-while True:
-	print(f"Pomodoros left for long break: {4-pomodoro_count}")
-	
-	if isBreak:
-		pomo_or_break="break"
-	else:
-		pomo_or_break="pomodoro"
-	
-	option=input(f"1. Start {pomo_or_break}\n\nPress 0 to exit program\n")
-	clear()
+#GUI
+window = tkinter.Tk()
 
-	if option=='0':
-		break
 
-	elif option=="1":
-		clock()
-
-	else:
-		print(f'"{option}" is not an option')
-		print("Press Enter to exit.")
-		input()
-
-print("Press enter to exit")
-input() #End
+window.mainloop()
