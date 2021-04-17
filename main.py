@@ -92,9 +92,10 @@ window.maxsize(width, height)
 window.minsize(width, height)
 
 #GUI Widgets
-
 #Widget Creation
+lblCurrentState = tkinter.Label(window, text=f"Currently on a break? {isBreak}")
 
 #Widget Placement
+lblCurrentState.grid(row=0, column=0)
 
 window.mainloop()
