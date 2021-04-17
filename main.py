@@ -3,6 +3,10 @@ import os
 from playsound import playsound
 import tkinter
 
+#Constant variables
+height = 400
+width = 400
+
 #Pomodoro settings
 pomodoro_minutes=25
 pomodoro_break=5
@@ -81,6 +85,9 @@ clear() #To have a clean console at the start
 
 #GUI
 window = tkinter.Tk()
+window.geometry(f"{width}x{height}")
+window.maxsize(width, height)
+window.minsize(width, height)
 
 
 window.mainloop()
