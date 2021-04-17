@@ -83,6 +83,12 @@ def showTime(time_left):
 #Program start functions
 clear() #To have a clean console at the start
 
+#GUI Widgets
+
+#Widget Creation
+
+#Widget Placement
+
 #GUI
 window = tkinter.Tk()
 
