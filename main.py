@@ -2,6 +2,7 @@ import time
 import os
 from playsound import playsound
 import tkinter
+import threading
 
 #Constant variables
 height = 400
@@ -97,7 +98,7 @@ window.minsize(width, height)
 lblCurrentState = tkinter.Label(window, text=f"Currently on a break? {isBreak}")
 
 #Button
-btnStart = tkinter.Button(window, text="Start", command=clock)
+btnStart = tkinter.Button(window, text="Start", command=threading.Thread(target=clock).start())
 
 #Widget Placement
 #Label
