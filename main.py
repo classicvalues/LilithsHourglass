@@ -77,9 +77,10 @@ def clock():
 		isBreak=True
 
 def showTime(time_left):
+	global lblTimeLeft
 	time_left-=1
 	time_converted=time.strftime("%M:%S", time.gmtime(time_left))
-	print(f"Time left: {time_converted}\r", end="\r")
+	lblTimeLeft.config(text=f"Time left: {time_converted}\r")
 
 #Program start functions
 clear() #To have a clean console at the start
@@ -96,6 +97,7 @@ window.minsize(width, height)
 #Widget Creation
 #Label
 lblCurrentState = tkinter.Label(window, text=f"Currently on a break? {isBreak}")
+lblTimeLeft = tkinter.Label(window, text="Time left: 00:00")
 
 #Button
 btnStart = tkinter.Button(window, text="Start", command=threading.Thread(target=clock).start)
@@ -103,6 +105,7 @@ btnStart = tkinter.Button(window, text="Start", command=threading.Thread(target=
 #Widget Placement
 #Label
 lblCurrentState.grid(row=0, column=0)
+lblTimeLeft.grid(row=2, column=0)
 
 #Button
 btnStart.grid(row=1, column=0)
