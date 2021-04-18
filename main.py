@@ -93,9 +93,18 @@ window.minsize(width, height)
 
 #GUI Widgets
 #Widget Creation
+#Label
 lblCurrentState = tkinter.Label(window, text=f"Currently on a break? {isBreak}")
 
+#Button
+btnStart = tkinter.Button(window, text="Start", command=clock)
+
 #Widget Placement
+#Label
 lblCurrentState.grid(row=0, column=0)
+
+#Button
+btnStart.grid(row=1, column=0)
+
 
 window.mainloop()
