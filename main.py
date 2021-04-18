@@ -9,9 +9,9 @@ height = 400
 width = 400
 
 #Pomodoro settings
-pomodoro_minutes=25
-pomodoro_break=5
-pomodoro_break_long=30
+pomodoro_minutes=0.01
+pomodoro_break=0.05
+pomodoro_break_long=0.1
 pomodoro_count=0
 isBreak=False
 pomo_or_break="pomodoro"
@@ -77,7 +77,9 @@ def clock():
 		isBreak=True
 	
 	global btnStart
+	global lblCurrentState
 	btnStart["state"] = "active"
+	lblCurrentState.config(text=f"Currently on a break? {isBreak}")
 
 def showTime(time_left):
 	global lblTimeLeft
