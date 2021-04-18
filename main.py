@@ -75,12 +75,20 @@ def clock():
 		play("pomodoro")
 		print("You've finished your pomodoro!")
 		isBreak=True
+	
+	global btnStart
+	btnStart["state"] = "active"
 
 def showTime(time_left):
 	global lblTimeLeft
 	time_left-=1
 	time_converted=time.strftime("%M:%S", time.gmtime(time_left))
 	lblTimeLeft.config(text=f"Time left: {time_converted}\r")
+
+def startClockThread():
+	threading.Thread(target=clock).start()
+	global btnStart
+	btnStart["state"] = "disabled"
 
 #Program start functions
 clear() #To have a clean console at the start
@@ -100,7 +108,7 @@ lblCurrentState = tkinter.Label(window, text=f"Currently on a break? {isBreak}")
 lblTimeLeft = tkinter.Label(window, text="Time left: 00:00")
 
 #Button
-btnStart = tkinter.Button(window, text="Start", command=threading.Thread(target=clock).start)
+btnStart = tkinter.Button(window, text="Start", command=startClockThread)
 
 #Widget Placement
 #Label
