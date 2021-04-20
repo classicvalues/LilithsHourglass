@@ -26,6 +26,7 @@ class Pomodoro:
 
 #Pomodoro settings
 pomodoroDefault = Pomodoro(25, 5, 30)
+pomodoroTest = Pomodoro(0.2, 0.1, 0.3)
 '''
 pomodoro minutes=25
 pomodoro break=5
