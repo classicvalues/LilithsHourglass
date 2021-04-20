@@ -25,7 +25,7 @@ class Pomodoro:
 
 #Pomodoro settings
 pomodoroDefault = Pomodoro(25, 5, 30) # pomodoro minutes = 25 / pomodoro break = 5 / pomodoro break long = 30
-pomodoroTest = Pomodoro(0.2, 0.1, 0.3)
+pomodoroTest = Pomodoro(0.01, 0.001, 0.011)
 
 #Quality of life variables
 pomodoro_count=0
@@ -91,6 +91,7 @@ def clock(pomo):
 			print("You've finished your long break!")
 		else:
 			pomodoro_count+=1
+			lblPomodorosLeft.config(text=f"Pomodoros left for long break: {4-pomodoro_count}")
 			print("You've finished your break!")
 		isBreak=False
 	else:
@@ -107,13 +108,15 @@ def showTime(time_left):
 	'''
 	Function prints time left
 	'''
-	
 	time_left-=1
 	time_converted=time.strftime("%M:%S", time.gmtime(time_left))
 	lblTimeLeft.config(text=f"Time left: {time_converted}\r")
 
 def startClockThread():
-	threading.Thread(target=clock, args=(pomodoroDefault,)).start()
+	'''
+	Function that starts the clock function on a different thread
+	'''
+	threading.Thread(target=clock, args=(pomodoroTest,)).start()
 	global btnStart
 	btnStart["state"] = "disabled"
 
@@ -133,6 +136,7 @@ window.minsize(width, height)
 #Label
 lblCurrentState = tkinter.Label(window, text=f"Currently on a break? {isBreak}")
 lblTimeLeft = tkinter.Label(window, text="Time left: 00:00")
+lblPomodorosLeft = tkinter.Label(window, text=f"Time left for long break: {4-pomodoro_count}")
 
 #Button
 btnStart = tkinter.ttk.Button(window, text="Start", command=startClockThread)
@@ -141,6 +145,7 @@ btnStart = tkinter.ttk.Button(window, text="Start", command=startClockThread)
 #Label
 lblCurrentState.grid(row=0, column=0)
 lblTimeLeft.grid(row=2, column=0)
+lblPomodorosLeft.grid(row=3, column=0)
 
 #Button
 btnStart.grid(row=1, column=0)
