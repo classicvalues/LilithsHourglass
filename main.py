@@ -116,7 +116,7 @@ def startClockThread():
 	'''
 	Function that starts the clock function on a different thread
 	'''
-	threading.Thread(target=clock, args=(pomodoroTest,)).start()
+	threading.Thread(target=clock, args=(pomodoroDefault,)).start()
 	global btnStart
 	btnStart["state"] = "disabled"
 
