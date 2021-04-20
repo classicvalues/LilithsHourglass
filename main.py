@@ -2,13 +2,12 @@ import time
 import os
 from playsound import playsound
 import tkinter
+import tkinter.ttk
 import threading
 
 #Constant variables
 height = 400
 width = 400
-
-#Constant variables
 
 #Pomodoro factory
 class Pomodoro:
@@ -141,7 +140,7 @@ lblCurrentState = tkinter.Label(window, text=f"Currently on a break? {isBreak}")
 lblTimeLeft = tkinter.Label(window, text="Time left: 00:00")
 
 #Button
-btnStart = tkinter.Button(window, text="Start", command=startClockThread)
+btnStart = tkinter.ttk.Button(window, text="Start", command=startClockThread)
 
 #Widget Placement
 #Label
