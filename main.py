@@ -131,6 +131,10 @@ window.geometry(f"{width}x{height}")
 window.maxsize(width, height)
 window.minsize(width, height)
 
+#Icon Settings
+icon = tkinter.PhotoImage(file = "Icon/sandclock.png")
+window.iconphoto(False, icon)
+
 #GUI Widgets
 #Widget Creation
 #Label
