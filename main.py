@@ -30,7 +30,6 @@ pomodoroTest = Pomodoro(0.01, 0.001, 0.011)
 #Quality of life variables
 pomodoro_count=0
 isBreak=False
-pomo_or_break="pomodoro"
 
 #System functions
 def play(sound):
