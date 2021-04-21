@@ -115,7 +115,7 @@ def showTime(time_left):
 	time_converted=time.strftime("%M:%S", time.gmtime(time_left))
 	lblTimeLeft.config(text=f"Time left: {time_converted}\r")
 
-def startClockThread():
+def startClock():
 	'''
 	Function that starts the clock function on a different thread
 	'''
@@ -154,7 +154,7 @@ lblTimeLeft = tkinter.Label(window, text="Time left: 00:00")
 lblPomodorosLeft = tkinter.Label(window, text=f"Time left for long break: {4-pomodoro_count}")
 
 #Button
-btnStart = tkinter.ttk.Button(window, text="Start", command=startClockThread)
+btnStart = tkinter.ttk.Button(window, text="Start", command=startClock)
 btnStop = tkinter.ttk.Button(window, text="Stop", command=stopClock)
 
 #Widget Placement
