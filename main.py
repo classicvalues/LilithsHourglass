@@ -136,7 +136,6 @@ def resetClockLabel():
 	lblTimeLeft.config(text="Time left: 00:00")
 
 #Program start functions
-clear() #To have a clean console at the start
 
 #GUI
 window = tkinter.Tk()
