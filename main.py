@@ -50,9 +50,6 @@ def play(sound):
 	
 	playsound(soundFilePath, False)
 
-clear=lambda: os.system('cls')
-#if UNIX use clear instead of cls
-
 #Pomodoro functions
 def clock(pomo):
 	'''
