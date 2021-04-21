@@ -141,6 +141,7 @@ def resetClockLabel():
 window = tkinter.Tk()
 
 #Window Settings
+window.title("Lilith's Hourglass")
 window.geometry(f"{width}x{height}")
 window.maxsize(width, height)
 window.minsize(width, height)
