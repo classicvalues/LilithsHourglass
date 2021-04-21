@@ -30,6 +30,7 @@ pomodoroTest = Pomodoro(0.01, 0.001, 0.011)
 #Quality of life variables
 pomodoro_count=0
 isBreak=False
+stop = False
 
 #System functions
 def play(sound):
@@ -80,6 +81,9 @@ def clock(pomo):
 			print('')
 			break
 
+		if stop:
+			break
+
 		showTime(time_left)
 		time.sleep(1)
 	
@@ -115,9 +119,17 @@ def startClockThread():
 	'''
 	Function that starts the clock function on a different thread
 	'''
+	global stop
+	if stop != False:
+		stop = False
+
 	threading.Thread(target=clock, args=(pomodoroDefault,)).start()
 	global btnStart
 	btnStart["state"] = "disabled"
+
+def stopClock():
+	global stop
+	stop = True
 
 #Program start functions
 clear() #To have a clean console at the start
@@ -143,6 +155,7 @@ lblPomodorosLeft = tkinter.Label(window, text=f"Time left for long break: {4-pom
 
 #Button
 btnStart = tkinter.ttk.Button(window, text="Start", command=startClockThread)
+btnStop = tkinter.ttk.Button(window, text="Stop", command=stopClock)
 
 #Widget Placement
 #Label
@@ -152,6 +165,7 @@ lblPomodorosLeft.grid(row=3, column=0)
 
 #Button
 btnStart.grid(row=1, column=0)
+btnStop.grid(row=1, column=1)
 
 
 window.mainloop()
