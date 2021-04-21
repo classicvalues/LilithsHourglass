@@ -87,20 +87,23 @@ def clock(pomo):
 		showTime(time_left)
 		time.sleep(1)
 	
-	if isBreak:
-		play("break")
-		if pomodoro_count==4:
-			pomodoro_count=0
-			print("You've finished your long break!")
-		else:
-			pomodoro_count+=1
-			lblPomodorosLeft.config(text=f"Pomodoros left for long break: {4-pomodoro_count}")
-			print("You've finished your break!")
-		isBreak=False
+	if stop:
+		resetClockLabel()	
 	else:
-		play("pomodoro")
-		print("You've finished your pomodoro!")
-		isBreak=True
+		if isBreak:
+			play("break")
+			if pomodoro_count==4:
+				pomodoro_count=0
+				print("You've finished your long break!")
+			else:
+				pomodoro_count+=1
+				lblPomodorosLeft.config(text=f"Pomodoros left for long break: {4-pomodoro_count}")
+				print("You've finished your break!")
+			isBreak=False
+		else:
+			play("pomodoro")
+			print("You've finished your pomodoro!")
+			isBreak=True
 	
 	global btnStart
 	global lblCurrentState
@@ -130,6 +133,10 @@ def startClock():
 def stopClock():
 	global stop
 	stop = True
+
+def resetClockLabel():
+	global lblTimeLeft
+	lblTimeLeft.config(text="Time left: 00:00")
 
 #Program start functions
 clear() #To have a clean console at the start
