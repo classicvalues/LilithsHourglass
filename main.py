@@ -167,10 +167,10 @@ btnStop = tkinter.ttk.Button(window, text="Stop", command=stopClock)
 
 #Widget Placement
 #Label
-lblTimeLeft.grid(row=0, column=0)
-lblCurrentState.grid(row=2, column=0)
-lblPomodorosLeft.grid(row=3, column=0)
-lblNotifications.grid(row=4, column=0)
+lblTimeLeft.grid(row=0, column=0, columnspan=2)
+lblCurrentState.grid(row=2, column=0, columnspan=2)
+lblPomodorosLeft.grid(row=3, column=0, columnspan=2)
+lblNotifications.grid(row=4, column=0, columnspan=2)
 
 #Button
 btnStart.grid(row=1, column=0)
