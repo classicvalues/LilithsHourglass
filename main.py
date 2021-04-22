@@ -91,15 +91,15 @@ def clock(pomo):
 			play("break")
 			if pomodoro_count==4:
 				pomodoro_count=0
-				print("You've finished your long break!")
+				updateNotifications("You've finished your long break!")
 			else:
 				pomodoro_count+=1
 				lblPomodorosLeft.config(text=f"Pomodoros left for long break: {4-pomodoro_count}")
-				print("You've finished your break!")
+				updateNotifications("You've finished your break!")
 			isBreak=False
 		else:
 			play("pomodoro")
-			print("You've finished your pomodoro!")
+			updateNotifications("You've finished your pomodoro!")
 			isBreak=True
 	
 	global btnStart
@@ -135,6 +135,9 @@ def resetClockLabel():
 	global lblTimeLeft
 	lblTimeLeft.config(text="Time left: 00:00")
 
+def updateNotifications(notification):
+	lblNotifications.config(text=f"{notification}")
+
 #Program start functions
 
 #GUI
@@ -156,6 +159,7 @@ window.iconphoto(False, icon)
 lblCurrentState = tkinter.Label(window, text=f"Currently on a break? {isBreak}")
 lblTimeLeft = tkinter.Label(window, text="Time left: 00:00")
 lblPomodorosLeft = tkinter.Label(window, text=f"Time left for long break: {4-pomodoro_count}")
+lblNotifications = tkinter.Label(window, text="")
 
 #Button
 btnStart = tkinter.ttk.Button(window, text="Start", command=startClock)
@@ -166,6 +170,7 @@ btnStop = tkinter.ttk.Button(window, text="Stop", command=stopClock)
 lblTimeLeft.grid(row=0, column=0)
 lblCurrentState.grid(row=2, column=0)
 lblPomodorosLeft.grid(row=3, column=0)
+lblNotifications.grid(row=4, column=0)
 
 #Button
 btnStart.grid(row=1, column=0)
