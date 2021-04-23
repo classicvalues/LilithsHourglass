@@ -19,8 +19,8 @@ class Pomodoro:
 		self.minutes_break = minutes_break
 		self.minutes_break_long = minutes_break_long
 
-	def printSettings(self):
-		print(F"your current settings are:\nminutes: {self.minutes}\nbreak: {self.minutes_break}\nlong break: {self.minutes_break_long}")
+	def showSettings(self):
+		return f"your current settings are:\nminutes: {self.minutes}\nbreak: {self.minutes_break}\nlong break: {self.minutes_break_long}"
 
 
 #Pomodoro settings
