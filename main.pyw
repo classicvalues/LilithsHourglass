@@ -84,7 +84,7 @@ def clock(pomo):
 		time.sleep(1)
 	
 	if stop:
-		resetClockLabel()	
+		resetClock()	
 	else:
 		if isBreak:
 			play("break")
@@ -112,7 +112,7 @@ def showTime(time_left):
 	'''
 	time_left-=1
 	time_converted=time.strftime("%M:%S", time.gmtime(time_left))
-	lblTimeLeft.config(text=f"Time left: {time_converted}\r")
+	updateTime(time_converted)
 
 def startClock():
 	'''
@@ -130,12 +130,14 @@ def stopClock():
 	global stop
 	stop = True
 
-def resetClockLabel():
-	global lblTimeLeft
-	lblTimeLeft.config(text="Time left: 00:00")
+def resetClock():
+	updateTime("00:00")
 
 def updateNotifications(notification):
 	lblNotifications.config(text=f"{notification}")
+
+def updateTime(time):
+	lblTimeLeft.config(text=f"{time}")
 
 #Program start functions
 
@@ -156,7 +158,7 @@ window.iconphoto(False, icon)
 #Widget Creation
 #Label
 lblCurrentState = tkinter.Label(window, text=f"Currently on a break? {isBreak}")
-lblTimeLeft = tkinter.Label(window, text="Time left: 00:00")
+lblTimeLeft = tkinter.Label(window, text="00:00")
 lblPomodorosLeft = tkinter.Label(window, text=f"Time left for long break: {4-pomodoro_count}")
 lblNotifications = tkinter.Label(window, text="")
 
