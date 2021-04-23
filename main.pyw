@@ -172,8 +172,8 @@ lblPomodorosLeft.grid(row=3, column=0, columnspan=2)
 lblNotifications.grid(row=4, column=0, columnspan=2)
 
 #Button
-btnStart.grid(row=1, column=0)
-btnStop.grid(row=1, column=1)
+btnStart.grid(row=1, column=0, padx=31, ipadx=31)
+btnStop.grid(row=1, column=1, padx=31, ipadx=31)
 
 
 window.mainloop()
