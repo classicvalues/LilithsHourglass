@@ -127,16 +127,28 @@ def startClock():
 	btnStart["state"] = "disabled"
 
 def stopClock():
+	'''
+	Function that changes variable stop and so makes the clock function stop and close its thread
+	'''
 	global stop
 	stop = True
 
 def resetClock():
+	'''
+	Function that resets time in lblTimeLeft
+	'''
 	updateTime("00:00")
 
 def updateNotifications(notification):
+	'''
+	Function that updates notifications label
+	'''
 	lblNotifications.config(text=f"{notification}")
 
 def updateTime(time):
+	'''
+	Function that updates lblTimeLeft with the data that has been given to it
+	'''
 	lblTimeLeft.config(text=f"{time}")
 
 #Program start functions
