@@ -75,7 +75,6 @@ def clock(pomo):
 		time_diff=int(round(time.perf_counter()-time_start))
 		time_left=minutes*60-time_diff
 		if time_left <= 0:
-			print('')
 			break
 
 		if stop:
