@@ -78,13 +78,12 @@ def clock(pomo):
 			break
 
 		if stop:
+			resetClock()
 			break
 
 		showTime(time_left)
 		time.sleep(1)
-	
-	if stop:
-		resetClock()	
+			
 	else:
 		if isBreak:
 			play("break")
