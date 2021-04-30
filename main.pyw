@@ -25,7 +25,7 @@ class Pomodoro:
 
 #Pomodoro settings
 pomodoroDefault = Pomodoro(25, 5, 30) # pomodoro minutes = 25 / pomodoro break = 5 / pomodoro break long = 30
-pomodoroTest = Pomodoro(0.01, 0.001, 0.011)
+pomodoroUltradian = Pomodoro(90, 20, 110)
 
 #Quality of life variables
 pomodoro_count = 0
