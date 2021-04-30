@@ -28,8 +28,8 @@ pomodoroDefault = Pomodoro(25, 5, 30) # pomodoro minutes = 25 / pomodoro break =
 pomodoroTest = Pomodoro(0.01, 0.001, 0.011)
 
 #Quality of life variables
-pomodoro_count=0
-isBreak=False
+pomodoro_count = 0
+isBreak = False
 stop = False
 
 #System functions
@@ -39,14 +39,14 @@ def play(sound):
 	'''
 	soundFilePath=''
 	
-	if sound=="pomodoro":
-		soundFilePath="sounds/finish.wav" #pomodoro sound
-	elif sound=="break":
-		soundFilePath="sounds/bfinish.wav" #break sound
-	elif sound=="pStart":
-		soundFilePath="sounds/start.wav" #pomodoro start sound
-	elif sound=="bStart":
-		soundFilePath="sounds/bstart.wav" #break start sound
+	if sound == "pomodoro":
+		soundFilePath =" sounds/finish.wav" #pomodoro sound
+	elif sound == "break":
+		soundFilePath = "sounds/bfinish.wav" #break sound
+	elif sound == "pStart":
+		soundFilePath = "sounds/start.wav" #pomodoro start sound
+	elif sound == "bStart":
+		soundFilePath = "sounds/bstart.wav" #break start sound
 	
 	playsound(soundFilePath, False)
 
@@ -61,19 +61,19 @@ def clock(pomo):
 	
 	if isBreak:
 		if pomodoro_count == 4:
-			minutes=pomo.minutes_break_long
+			minutes = pomo.minutes_break_long
 		else:
-			minutes=pomo.minutes_break
+			minutes = pomo.minutes_break
 		play("bStart")
 	else:
-		minutes=pomo.minutes
+		minutes = pomo.minutes
 		play("pStart")
 
-	time_start=time.perf_counter()
+	time_start = time.perf_counter()
 	
 	while True:
-		time_diff=int(round(time.perf_counter()-time_start))
-		time_left=minutes*60-time_diff
+		time_diff = int(round(time.perf_counter()-time_start))
+		time_left = minutes*60-time_diff
 		if time_left <= 0:
 			break
 
@@ -88,18 +88,18 @@ def clock(pomo):
 	else:
 		if isBreak:
 			play("break")
-			if pomodoro_count==4:
-				pomodoro_count=0
+			if pomodoro_count == 4:
+				pomodoro_count = 0
 				updateNotifications("You've finished your long break!")
 			else:
 				pomodoro_count+=1
 				lblPomodorosLeft.config(text=f"Pomodoros left for long break: {4-pomodoro_count}")
 				updateNotifications("You've finished your break!")
-			isBreak=False
+			isBreak = False
 		else:
 			play("pomodoro")
 			updateNotifications("You've finished your pomodoro!")
-			isBreak=True
+			isBreak = True
 	
 	global btnStart
 	global lblCurrentState
