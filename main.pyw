@@ -117,7 +117,7 @@ def clock(pomo):
 def showTime(time_left):
 	global selectedPomodoro
 	'''
-	Function prints time left
+	Function that updates a label to show time left
 	'''
 	time_left-=1
 	if selectedPomodoro.overSixty:
