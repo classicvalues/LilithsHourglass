@@ -121,7 +121,7 @@ def startClock():
 	if stop != False:
 		stop = False
 
-	threading.Thread(target=clock, args=(pomodoroDefault,)).start()
+	threading.Thread(target=clock, args=(selectedPomodoro,)).start()
 	global btnStart
 	btnStart["state"] = "disabled"
 
@@ -151,6 +151,7 @@ def updateTime(time):
 	lblTimeLeft.config(text=f"{time}")
 
 #Program start functions
+selectedPomodoro = pomodoroDefault
 
 #GUI
 window = tkinter.Tk()
