@@ -165,6 +165,9 @@ def updateTime(time):
 	lblTimeLeft.config(text=f"{time}")
 
 def pomoSwitch():
+	'''
+	Function that cycles through pomodoro settings
+	'''
 	global selectedPomodoro
 	if selectedPomodoro == pomodoroDefault:
 		selectedPomodoro = pomodoroUltradian
