@@ -14,18 +14,26 @@ class Pomodoro:
 	'''
 	Pomodoro class that takes settings used for pomodoros (pomodoro time, break time, long break time)
 	'''
-	def __init__(self, minutes, minutes_break, minutes_break_long):
+	def __init__(self, name, minutes, minutes_break, minutes_break_long):
+		self.name = name
 		self.minutes = minutes
 		self.minutes_break = minutes_break
 		self.minutes_break_long = minutes_break_long
+		self.__overSixtyCheck()
 
 	def showSettings(self):
 		return f"your current settings are:\nminutes: {self.minutes}\nbreak: {self.minutes_break}\nlong break: {self.minutes_break_long}"
+	
+	def __overSixtyCheck(self):
+		if self.minutes > 60:
+			self.overSixty = True
+		else:
+			self.overSixty = False
 
 
 #Pomodoro settings
-pomodoroDefault = Pomodoro(25, 5, 30) # pomodoro minutes = 25 / pomodoro break = 5 / pomodoro break long = 30
-pomodoroUltradian = Pomodoro(90, 20, 110)
+pomodoroDefault = Pomodoro("Default", 25, 5, 30) # pomodoro minutes = 25 / pomodoro break = 5 / pomodoro break long = 30
+pomodoroUltradian = Pomodoro("Ultradian", 90, 20, 110)
 
 #Quality of life variables
 pomodoro_count = 0
@@ -103,14 +111,19 @@ def clock(pomo):
 	global btnStart
 	global lblCurrentState
 	btnStart["state"] = "active"
+	btnPomodoroChange["state"] = "active"
 	lblCurrentState.config(text=f"Currently on a break? {isBreak}")
 
 def showTime(time_left):
+	global selectedPomodoro
 	'''
 	Function prints time left
 	'''
 	time_left-=1
-	time_converted=time.strftime("%M:%S", time.gmtime(time_left))
+	if selectedPomodoro.overSixty:
+		time_converted=time.strftime("%H:%M:%S", time.gmtime(time_left))
+	else:
+		time_converted=time.strftime("%M:%S", time.gmtime(time_left))
 	updateTime(time_converted)
 
 def startClock():
@@ -124,6 +137,7 @@ def startClock():
 	threading.Thread(target=clock, args=(selectedPomodoro,)).start()
 	global btnStart
 	btnStart["state"] = "disabled"
+	btnPomodoroChange["state"] = "disabled"
 
 def stopClock():
 	'''
@@ -149,6 +163,14 @@ def updateTime(time):
 	Function that updates lblTimeLeft with the data that has been given to it
 	'''
 	lblTimeLeft.config(text=f"{time}")
+
+def pomoSwitch():
+	global selectedPomodoro
+	if selectedPomodoro == pomodoroDefault:
+		selectedPomodoro = pomodoroUltradian
+	elif selectedPomodoro == pomodoroUltradian:
+		selectedPomodoro = pomodoroDefault
+	btnPomodoroChange.config(text=f"{selectedPomodoro.name}")
 
 #Program start functions
 selectedPomodoro = pomodoroDefault
@@ -177,17 +199,19 @@ lblNotifications = tkinter.Label(window, text="")
 #Button
 btnStart = tkinter.ttk.Button(window, text="Start", command=startClock)
 btnStop = tkinter.ttk.Button(window, text="Stop", command=stopClock)
+btnPomodoroChange = tkinter.ttk.Button(window, text=f"{selectedPomodoro.name}", command=pomoSwitch)
 
 #Widget Placement
 #Label
 lblTimeLeft.grid(row=0, column=0, columnspan=2)
-lblCurrentState.grid(row=2, column=0, columnspan=2)
-lblPomodorosLeft.grid(row=3, column=0, columnspan=2)
-lblNotifications.grid(row=4, column=0, columnspan=2)
+lblCurrentState.grid(row=3, column=0, columnspan=2)
+lblPomodorosLeft.grid(row=4, column=0, columnspan=2)
+lblNotifications.grid(row=5, column=0, columnspan=2)
 
 #Button
 btnStart.grid(row=1, column=0, padx=31, ipadx=31)
 btnStop.grid(row=1, column=1, padx=31, ipadx=31)
+btnPomodoroChange.grid(row=2, column=0, columnspan=2, ipadx=131)
 
 
 window.mainloop()
