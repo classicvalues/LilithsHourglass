@@ -59,7 +59,7 @@ def play(sound):
 		elif sound == "bStart":
 			soundFilePath = "sounds/bstart.wav" #break start sound
 	elif simpleSound.get() == 1:
-		soundFilePath = "sounds/ding.mp3"
+		soundFilePath = "sounds/bell.wav"
 
 	playsound(soundFilePath, False)
 
