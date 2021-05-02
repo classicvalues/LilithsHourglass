@@ -14,12 +14,13 @@ class Pomodoro:
 	'''
 	Pomodoro class that takes settings used for pomodoros (pomodoro time, break time, long break time)
 	'''
-	def __init__(self, name, minutes, minutes_break, minutes_break_long):
+	def __init__(self, name, minutes, minutes_break, minutes_break_long, has_long_break):
 		self.name = name
 		self.minutes = minutes
 		self.minutes_break = minutes_break
 		self.minutes_break_long = minutes_break_long
 		self.__overSixtyCheck()
+		self.has_long_break = has_long_break
 
 	def showSettings(self):
 		return f"your current settings are:\nminutes: {self.minutes}\nbreak: {self.minutes_break}\nlong break: {self.minutes_break_long}"
@@ -31,11 +32,11 @@ class Pomodoro:
 			self.overSixty = False
 
 #Pomodoro settings
-pomodoroDefault = Pomodoro("Default", 25, 5, 30) # pomodoro minutes = 25 / pomodoro break = 5 / pomodoro break long = 30
-pomodoroDouble = Pomodoro("Double", 50, 10, 60)
-pomodoroDesktime = Pomodoro("Desktime", 52, 17, 69)
-pomodoroUltradian = Pomodoro("Ultradian", 90, 20, 110)
-pomodoroTest = Pomodoro("Test", 0.01, 0.01, 0.01)
+pomodoroDefault = Pomodoro("Default", 25, 5, 30, True) # pomodoro minutes = 25 / pomodoro break = 5 / pomodoro break long = 30
+pomodoroDouble = Pomodoro("Double", 50, 10, 60, True)
+pomodoroDesktime = Pomodoro("Desktime", 52, 17, 69, False)
+pomodoroUltradian = Pomodoro("Ultradian", 90, 20, False)
+pomodoroTest = Pomodoro("Test", 0.01, 0.01, 0.01, True)
 
 #Quality of life variables
 pomodoro_count = 0
@@ -104,7 +105,11 @@ def clock(pomo):
 				updatePomodorosLeft()
 				updateNotifications("You've finished your long break!")
 			else:
-				pomodoro_count+=1
+				if selectedPomodoro.has_long_break:
+					pomodoro_count+=1
+				else:
+					pass
+				
 				updatePomodorosLeft()
 				updateNotifications("You've finished your break!")
 			isBreak = False
