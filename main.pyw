@@ -30,7 +30,6 @@ class Pomodoro:
 		else:
 			self.overSixty = False
 
-
 #Pomodoro settings
 pomodoroDefault = Pomodoro("Default", 25, 5, 30) # pomodoro minutes = 25 / pomodoro break = 5 / pomodoro break long = 30
 pomodoroDouble = Pomodoro("Double", 50, 10, 60)
@@ -101,10 +100,11 @@ def clock(pomo):
 			play("break")
 			if pomodoro_count == 4:
 				pomodoro_count = 0
+				updatePomodorosLeft()
 				updateNotifications("You've finished your long break!")
 			else:
 				pomodoro_count+=1
-				lblPomodorosLeft.config(text=f"Pomodoros left for long break: {4-pomodoro_count}")
+				updatePomodorosLeft()
 				updateNotifications("You've finished your break!")
 			isBreak = False
 		else:
@@ -186,8 +186,11 @@ def pomoSwitch():
 
 	resetClock()
 
+def updatePomodorosLeft():
+	lblPomodorosLeft.config(text=f"Pomodoros left for long break: {4-pomodoro_count}")
+
 #Program start functions
-selectedPomodoro = pomodoroDefault
+selectedPomodoro = pomodoroTest
 
 #GUI
 window = tkinter.Tk()
