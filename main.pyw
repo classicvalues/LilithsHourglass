@@ -190,8 +190,7 @@ def updatePomodorosLeft():
 	lblPomodorosLeft.config(text=f"Pomodoros left for long break: {4-pomodoro_count}")
 
 #Program start functions
-selectedPomodoro = pomodoroTest
-
+selectedPomodoro = pomodoroDefault
 #GUI
 window = tkinter.Tk()
 
