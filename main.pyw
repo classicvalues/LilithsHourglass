@@ -93,21 +93,24 @@ def clock(pomo):
 
 		showTime(time_left)
 		time.sleep(1)
-			
-	if isBreak:
-		play("break")
-		if pomodoro_count == 4:
-			pomodoro_count = 0
-			updateNotifications("You've finished your long break!")
-		else:
-			pomodoro_count+=1
-			lblPomodorosLeft.config(text=f"Pomodoros left for long break: {4-pomodoro_count}")
-			updateNotifications("You've finished your break!")
-		isBreak = False
+	
+	if stop:
+		pass
 	else:
-		play("pomodoro")
-		updateNotifications("You've finished your pomodoro!")
-		isBreak = True
+		if isBreak:
+			play("break")
+			if pomodoro_count == 4:
+				pomodoro_count = 0
+				updateNotifications("You've finished your long break!")
+			else:
+				pomodoro_count+=1
+				lblPomodorosLeft.config(text=f"Pomodoros left for long break: {4-pomodoro_count}")
+				updateNotifications("You've finished your break!")
+			isBreak = False
+		else:
+			play("pomodoro")
+			updateNotifications("You've finished your pomodoro!")
+			isBreak = True
 	
 	global btnStart
 	global lblCurrentState
