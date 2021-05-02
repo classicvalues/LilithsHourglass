@@ -33,6 +33,7 @@ class Pomodoro:
 #Pomodoro settings
 pomodoroDefault = Pomodoro("Default", 25, 5, 30) # pomodoro minutes = 25 / pomodoro break = 5 / pomodoro break long = 30
 pomodoroDouble = Pomodoro("Double", 50, 10, 60)
+pomodoroDesktime = Pomodoro("Desktime", 52, 17, 69)
 pomodoroUltradian = Pomodoro("Ultradian", 90, 20, 110)
 pomodoroTest = Pomodoro("Test", 0.01, 0.01, 0.01)
 
@@ -179,6 +180,8 @@ def pomoSwitch():
 	if selectedPomodoro == pomodoroDefault:
 		selectedPomodoro = pomodoroDouble
 	elif selectedPomodoro == pomodoroDouble:
+		selectedPomodoro = pomodoroDesktime
+	elif selectedPomodoro == pomodoroDesktime:
 		selectedPomodoro = pomodoroUltradian
 	elif selectedPomodoro == pomodoroUltradian:
 		selectedPomodoro = pomodoroDefault
