@@ -35,6 +35,7 @@ class Pomodoro:
 pomodoroDefault = Pomodoro("Default", 25, 5, 30) # pomodoro minutes = 25 / pomodoro break = 5 / pomodoro break long = 30
 pomodoroDouble = Pomodoro("Double", 50, 10, 60)
 pomodoroUltradian = Pomodoro("Ultradian", 90, 20, 110)
+pomodoroTest = Pomodoro("Test", 0.01, 0.01, 0.01)
 
 #Quality of life variables
 pomodoro_count = 0
