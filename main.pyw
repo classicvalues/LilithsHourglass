@@ -187,7 +187,7 @@ def pomoSwitch():
 	resetClock()
 
 #Program start functions
-selectedPomodoro = pomodoroTest
+selectedPomodoro = pomodoroDefault
 
 #GUI
 window = tkinter.Tk()
