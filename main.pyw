@@ -50,7 +50,7 @@ def play(sound):
 	soundFilePath=''
 	
 	if sound == "pomodoro":
-		soundFilePath =" sounds/finish.wav" #pomodoro sound
+		soundFilePath ="sounds/finish.wav" #pomodoro sound
 	elif sound == "break":
 		soundFilePath = "sounds/bfinish.wav" #break sound
 	elif sound == "pStart":
