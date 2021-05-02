@@ -151,7 +151,10 @@ def resetClock():
 	'''
 	Function that resets time in lblTimeLeft
 	'''
-	updateTime("00:00")
+	if selectedPomodoro.overSixty:
+		updateTime(time.strftime('%H:%M:%S', time.gmtime(selectedPomodoro.minutes*60)))
+	else:
+		updateTime(time.strftime('%M:%S', time.gmtime(selectedPomodoro.minutes*60)))
 
 def updateNotifications(notification):
 	'''
@@ -177,6 +180,8 @@ def pomoSwitch():
 	elif selectedPomodoro == pomodoroUltradian:
 		selectedPomodoro = pomodoroDefault
 	btnPomodoroChange.config(text=f"{selectedPomodoro.name}")
+
+	resetClock()
 
 #Program start functions
 selectedPomodoro = pomodoroDefault
