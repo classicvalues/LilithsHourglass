@@ -49,16 +49,18 @@ def play(sound):
 	Function that makes the sound when pomodoros and breaks are started or finished
 	'''
 	soundFilePath=''
-	
-	if sound == "pomodoro":
-		soundFilePath ="sounds/finish.wav" #pomodoro sound
-	elif sound == "break":
-		soundFilePath = "sounds/bfinish.wav" #break sound
-	elif sound == "pStart":
-		soundFilePath = "sounds/start.wav" #pomodoro start sound
-	elif sound == "bStart":
-		soundFilePath = "sounds/bstart.wav" #break start sound
-	
+	if simpleSound.get() == 0:
+		if sound == "pomodoro":
+			soundFilePath ="sounds/finish.wav" #pomodoro sound
+		elif sound == "break":
+			soundFilePath = "sounds/bfinish.wav" #break sound
+		elif sound == "pStart":
+			soundFilePath = "sounds/start.wav" #pomodoro start sound
+		elif sound == "bStart":
+			soundFilePath = "sounds/bstart.wav" #break start sound
+	elif simpleSound.get() == 1:
+		soundFilePath = "sounds/ding.mp3"
+
 	playsound(soundFilePath, False)
 
 #Pomodoro functions
@@ -220,6 +222,9 @@ window.minsize(width, height)
 icon = tkinter.PhotoImage(file = "Icon/sandclock.png")
 window.iconphoto(False, icon)
 
+#Checkbox variable
+simpleSound = tkinter.IntVar()
+
 #GUI Widgets
 #Widget Creation
 #Label
@@ -233,6 +238,9 @@ btnStart = tkinter.ttk.Button(window, text="Start", command=startClock)
 btnStop = tkinter.ttk.Button(window, text="Stop", command=stopClock)
 btnPomodoroChange = tkinter.ttk.Button(window, text=f"{selectedPomodoro.name}", command=pomoSwitch)
 
+#Checkbox
+cbSimpleSound = tkinter.ttk.Checkbutton(window, variable=simpleSound, text="Use simple sound")
+
 #Widget Placement
 #Label
 lblTimeLeft.grid(row=0, column=0, columnspan=2)
@@ -245,5 +253,7 @@ btnStart.grid(row=1, column=0, padx=31, ipadx=31)
 btnStop.grid(row=1, column=1, padx=31, ipadx=31)
 btnPomodoroChange.grid(row=2, column=0, columnspan=2, ipadx=131)
 
+#Checkbox
+cbSimpleSound.grid(row=6, column=0, columnspan=2, padx=131)
 
 window.mainloop()
