@@ -198,7 +198,7 @@ window.iconphoto(False, icon)
 #Widget Creation
 #Label
 lblCurrentState = tkinter.Label(window, text=f"Currently on a break? {isBreak}")
-lblTimeLeft = tkinter.Label(window, text="00:00", font=("Calibri", 30))
+lblTimeLeft = tkinter.Label(window, text=f"{time.strftime('%M:%S', time.gmtime(selectedPomodoro.minutes*60))}", font=("Calibri", 30))
 lblPomodorosLeft = tkinter.Label(window, text=f"Time left for long break: {4-pomodoro_count}")
 lblNotifications = tkinter.Label(window, text="")
 
