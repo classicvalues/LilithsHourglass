@@ -107,10 +107,10 @@ def clock(pomo):
 			else:
 				if selectedPomodoro.has_long_break:
 					pomodoro_count+=1
+					updatePomodorosLeft()
 				else:
 					pass
 				
-				updatePomodorosLeft()
 				updateNotifications("You've finished your break!")
 			isBreak = False
 		else:
@@ -193,9 +193,16 @@ def pomoSwitch():
 	btnPomodoroChange.config(text=f"{selectedPomodoro.name}")
 
 	resetClock()
+	checkLongBreak()
 
 def updatePomodorosLeft():
 	lblPomodorosLeft.config(text=f"Pomodoros left for long break: {4-pomodoro_count}")
+
+def checkLongBreak():
+	if selectedPomodoro.has_long_break:
+		updatePomodorosLeft()
+	else:
+		lblPomodorosLeft.config(text=f"Current pomodoro has no long break")
 
 #Program start functions
 selectedPomodoro = pomodoroDefault
