@@ -34,7 +34,7 @@ class Pomodoro:
 #Pomodoro settings
 pomodoroDefault = Pomodoro("Default", 25, 5, 30, True) # pomodoro minutes = 25 / pomodoro break = 5 / pomodoro break long = 30
 pomodoroDouble = Pomodoro("Double", 50, 10, 60, True)
-pomodoroDesktime = Pomodoro("Desktime", 52, 17, 69, False)
+pomodoroDesktime = Pomodoro("Desktime", 52, 17, 0, False)
 pomodoroUltradian = Pomodoro("Ultradian", 90, 20, 0, False)
 pomodoroTest = Pomodoro("Test", 0.01, 0.01, 0.01, True)
 
@@ -199,6 +199,7 @@ def updatePomodorosLeft():
 
 #Program start functions
 selectedPomodoro = pomodoroDefault
+
 #GUI
 window = tkinter.Tk()
 
