@@ -1,2 +1,2 @@
-# LilithHourglass
+# LilithsHourglass
  (not only) A pomodoro
