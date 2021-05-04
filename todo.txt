@@ -6,3 +6,4 @@
 [ ] Add option to set tasks
 [ ] Add a system that shows how many time you've spent in doing tasks
 [ ] Add a graph system to show time spent on tasks
+[ ] Separate GUI and logic into two files so you can change GUI easily without having to rewrite logic
