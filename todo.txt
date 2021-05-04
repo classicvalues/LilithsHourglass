@@ -1,8 +1,8 @@
-[ ] Add a license
+[x] Add a license
 [ ] Clean code
-[ ] Get a logo
+[x] Get a logo
 [ ] Implement a GUI
-[ ] Add better sounds
+[x] Add better sounds
 [ ] Add option to set tasks
 [ ] Add a system that shows how many time you've spent in doing tasks
 [ ] Add a graph system to show time spent on tasks
