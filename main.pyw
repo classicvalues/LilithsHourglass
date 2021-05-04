@@ -1,5 +1,4 @@
 import time
-import os
 from playsound import playsound
 import tkinter
 import tkinter.ttk
