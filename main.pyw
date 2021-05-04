@@ -207,7 +207,7 @@ def checkLongBreak():
 		lblPomodorosLeft.config(text=f"Current pomodoro has no long break")
 
 #Program start functions
-selectedPomodoro = pomodoroDefault
+selectedPomodoro = pomodoroDefault #Select the pomodoro that's being used
 
 #GUI
 window = tkinter.Tk()
