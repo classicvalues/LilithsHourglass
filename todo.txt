@@ -1,9 +1,9 @@
 [x] Add a license
-[ ] Clean code
 [x] Get a logo
-[ ] Implement a GUI
+[x] Implement a GUI
 [x] Add better sounds
 [ ] Add option to set tasks
 [ ] Add a system that shows how many time you've spent in doing tasks
 [ ] Add a graph system to show time spent on tasks
 [ ] Separate GUI and logic into two files so you can change GUI easily without having to rewrite logic
+[ ] Find a pattern to separate both GUI and logic
