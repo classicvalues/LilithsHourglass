@@ -223,9 +223,11 @@ window = tkinter.Tk()
 screen_width = window.winfo_screenwidth()
 screen_height = window.winfo_screenheight()
 
+#Get centered coords
 screen_position_width = (screen_width / 2) - (width / 2)
 screen_position_height = (screen_height / 2) - (height / 2)
 
+#Round coords due to geometry using ints
 screen_position_height = int(round(screen_position_height))
 screen_position_width = int(round(screen_position_width))
 
