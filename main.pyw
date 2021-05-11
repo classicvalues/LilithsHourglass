@@ -21,7 +21,7 @@ class Pomodoro:
 		self.__overSixtyCheck()
 		self.has_long_break = has_long_break
 
-	def showSettings(self):
+	def showSettings(self) -> str:
 		if self.has_long_break:
 			return f"your current settings are:\nminutes: {self.minutes}\nbreak: {self.minutes_break}\nlong break: {self.minutes_break_long}"
 		else:
