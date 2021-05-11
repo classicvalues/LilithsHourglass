@@ -219,9 +219,19 @@ selectedPomodoro = pomodoroDefault #Select the pomodoro that's being used
 #GUI
 window = tkinter.Tk()
 
+#Get screen dimensions
+screen_width = window.winfo_screenwidth()
+screen_height = window.winfo_screenheight()
+
+screen_position_width = (screen_width / 2) - (width / 2)
+screen_position_height = (screen_height / 2) - (height / 2)
+
+screen_position_height = int(round(screen_position_height))
+screen_position_width = int(round(screen_position_width))
+
 #Window Settings
 window.title("Lilith's Hourglass")
-window.geometry(f"{width}x{height}")
+window.geometry(f"{width}x{height}+{screen_position_width}+{screen_position_height}")
 window.maxsize(width, height)
 window.minsize(width, height)
 
