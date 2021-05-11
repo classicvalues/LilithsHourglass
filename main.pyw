@@ -3,6 +3,7 @@ from playsound import playsound
 import tkinter
 import tkinter.ttk
 import threading
+import tkinter.messagebox
 
 #Constant variables
 height = 400
@@ -21,9 +22,12 @@ class Pomodoro:
 		self.__overSixtyCheck()
 		self.has_long_break = has_long_break
 
-	def showSettings(self):
-		return f"your current settings are:\nminutes: {self.minutes}\nbreak: {self.minutes_break}\nlong break: {self.minutes_break_long}"
-	
+	def showSettings(self) -> str:
+		if self.has_long_break:
+			return f"your current settings are:\nminutes: {self.minutes}\nbreak: {self.minutes_break}\nlong break: {self.minutes_break_long}"
+		else:
+			return f"your current settings are:\nminutes: {self.minutes}\nbreak: {self.minutes_break}"
+
 	def __overSixtyCheck(self):
 		if self.minutes > 60:
 			self.overSixty = True
@@ -195,6 +199,7 @@ def pomoSwitch():
 
 	resetClock()
 	checkLongBreak()
+	updateSettingsLabel()
 
 def updatePomodorosLeft():
 	lblPomodorosLeft.config(text=f"Pomodoros left for long break: {4-pomodoro_count}")
@@ -205,15 +210,38 @@ def checkLongBreak():
 	else:
 		lblPomodorosLeft.config(text=f"Current pomodoro has no long break")
 
+def updateSettingsLabel():
+	global lblCurrentSettings
+	lblCurrentSettings.config(text=f"{selectedPomodoro.showSettings()}")
+
+def on_close():
+	if tkinter.messagebox.askokcancel("Quit", "Do you want to quit?"):
+		window.destroy()
+
 #Program start functions
 selectedPomodoro = pomodoroDefault #Select the pomodoro that's being used
 
 #GUI
 window = tkinter.Tk()
 
+#Protocols
+window.protocol("WM_DELETE_WINDOW", on_close)
+
+#Get screen dimensions
+screen_width = window.winfo_screenwidth()
+screen_height = window.winfo_screenheight()
+
+#Get centered coords
+screen_position_width = (screen_width / 2) - (width / 2)
+screen_position_height = (screen_height / 2) - (height / 2)
+
+#Round coords due to geometry using ints
+screen_position_height = int(round(screen_position_height))
+screen_position_width = int(round(screen_position_width))
+
 #Window Settings
 window.title("Lilith's Hourglass")
-window.geometry(f"{width}x{height}")
+window.geometry(f"{width}x{height}+{screen_position_width}+{screen_position_height}")
 window.maxsize(width, height)
 window.minsize(width, height)
 
@@ -231,6 +259,7 @@ lblCurrentState = tkinter.Label(window, text=f"Currently on a break? {isBreak}")
 lblTimeLeft = tkinter.Label(window, text=f"{time.strftime('%M:%S', time.gmtime(selectedPomodoro.minutes*60))}", font=("Calibri", 30))
 lblPomodorosLeft = tkinter.Label(window, text=f"Pomodoros left for long break: {4-pomodoro_count}")
 lblNotifications = tkinter.Label(window, text="")
+lblCurrentSettings = tkinter.Label(window, text=f"{selectedPomodoro.showSettings()}")
 
 #Button
 btnStart = tkinter.ttk.Button(window, text="Start", command=startClock)
@@ -246,6 +275,7 @@ lblTimeLeft.grid(row=0, column=0, columnspan=2)
 lblCurrentState.grid(row=3, column=0, columnspan=2)
 lblPomodorosLeft.grid(row=4, column=0, columnspan=2)
 lblNotifications.grid(row=5, column=0, columnspan=2)
+lblCurrentSettings.grid(row=7, column=0, columnspan=2)
 
 #Button
 btnStart.grid(row=1, column=0, padx=31, ipadx=31)
