@@ -3,6 +3,7 @@ from playsound import playsound
 import tkinter
 import tkinter.ttk
 import threading
+import tkinter.messagebox
 
 #Constant variables
 height = 400
@@ -213,11 +214,18 @@ def updateSettingsLabel():
 	global lblCurrentSettings
 	lblCurrentSettings.config(text=f"{selectedPomodoro.showSettings()}")
 
+def on_close():
+	if tkinter.messagebox.askokcancel("Quit", "Do you want to quit?"):
+		window.destroy()
+
 #Program start functions
 selectedPomodoro = pomodoroDefault #Select the pomodoro that's being used
 
 #GUI
 window = tkinter.Tk()
+
+#Protocols
+window.protocol("WM_DELETE_WINDOW", on_close)
 
 #Get screen dimensions
 screen_width = window.winfo_screenwidth()
