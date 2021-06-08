@@ -127,7 +127,7 @@ def clock(pomo):
 	global lblCurrentState
 	btnStart["state"] = "active"
 	btnPomodoroChange["state"] = "active"
-	lblCurrentState.config(text=f"Currently on a break? {isBreak}")
+	update_state()
 
 def showTime(time_left):
 	global selectedPomodoro
@@ -218,8 +218,20 @@ def on_close():
 	if tkinter.messagebox.askokcancel("Quit", "Do you want to quit?"):
 		window.destroy()
 
+def update_state():
+	current_state = ""
+	if isBreak and pomodoro_count == 4:
+		current_state = "Long Break"
+	elif isBreak and pomodoro_count != 4:
+		current_state = "Break"
+	elif isBreak == False:
+		current_state = "Pomodoro"
+
+
+	lblCurrentState.config(text=current_state)
+
 #Program start functions
-selectedPomodoro = pomodoroDefault #Select the pomodoro that's being used
+selectedPomodoro = pomodoroTest #Select the pomodoro that's being used
 
 #GUI
 window = tkinter.Tk()
@@ -255,7 +267,7 @@ differentSound = tkinter.IntVar()
 #GUI Widgets
 #Widget Creation
 #Label
-lblCurrentState = tkinter.Label(window, text=f"Currently on a break? {isBreak}")
+lblCurrentState = tkinter.Label(window, text=f"Pomodoro")
 lblTimeLeft = tkinter.Label(window, text=f"{time.strftime('%M:%S', time.gmtime(selectedPomodoro.minutes*60))}", font=("Calibri", 30))
 lblPomodorosLeft = tkinter.Label(window, text=f"Pomodoros left for long break: {4-pomodoro_count}")
 lblNotifications = tkinter.Label(window, text="")
