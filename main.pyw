@@ -226,7 +226,7 @@ def update_state():
 	lblCurrentState.config(text=current_state)
 
 #Program start functions
-selectedPomodoro = pomodoroTest #Select the pomodoro that's being used
+selectedPomodoro = pomodoroDefault #Select the pomodoro that's being used
 
 #GUI
 window = tkinter.Tk()
