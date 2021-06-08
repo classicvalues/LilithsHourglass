@@ -213,7 +213,7 @@ def update_state():
 	lblCurrentState.config(text=current_state)
 
 #Program start functions
-selectedPomodoro = pomodoroDefault #Select the pomodoro that's being used
+selectedPomodoro = pomodoroTest #Select the pomodoro that's being used
 
 #GUI
 window = tkinter.Tk()
@@ -246,9 +246,9 @@ window.iconphoto(False, icon)
 #GUI Widgets
 #Widget Creation
 #Label
-lblCurrentState = tkinter.Label(window, text=f"Pomodoro")
-lblTimeLeft = tkinter.Label(window, text=f"{time.strftime('%M:%S', time.gmtime(selectedPomodoro.minutes*60))}", font=("Calibri", 30))
-lblPomodorosLeft = tkinter.Label(window, text=f"Pomodoros left for long break: {4-pomodoro_count}")
+lblCurrentState = tkinter.Label(window, text=f"Pomodoro", font=("Calibri", 15))
+lblTimeLeft = tkinter.Label(window, text=f"{time.strftime('%M:%S', time.gmtime(selectedPomodoro.minutes*60))}", font=("Calibri", 50))
+lblPomodorosLeft = tkinter.Label(window, text=f"Pomodoros left for long break: {4-pomodoro_count}", font=("Calibri"))
 lblNotifications = tkinter.Label(window, text="")
 
 #Button
@@ -259,13 +259,13 @@ btnPomodoroChange = tkinter.ttk.Button(window, text=f"{selectedPomodoro.name}", 
 #Widget Placement
 #Label
 lblTimeLeft.grid(row=0, column=0, columnspan=2)
-lblCurrentState.grid(row=3, column=0, columnspan=2)
-lblPomodorosLeft.grid(row=4, column=0, columnspan=2)
-lblNotifications.grid(row=5, column=0, columnspan=2)
+lblCurrentState.grid(row=1, column=0, columnspan=2)
+lblPomodorosLeft.grid(row=2, column=0, columnspan=2)
+lblNotifications.grid(row=3, column=0, columnspan=2, pady=(0, 175))
 
 #Button
-btnStart.grid(row=1, column=0, padx=31, ipadx=31)
-btnStop.grid(row=1, column=1, padx=31, ipadx=31)
-btnPomodoroChange.grid(row=2, column=0, columnspan=2, ipadx=131)
+btnStart.grid(row=4, column=0, padx=31, ipadx=31)
+btnStop.grid(row=4, column=1, padx=31, ipadx=31)
+btnPomodoroChange.grid(row=5, column=0, columnspan=2, ipadx=131)
 
 window.mainloop()
