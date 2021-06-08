@@ -199,7 +199,6 @@ def pomoSwitch():
 
 	resetClock()
 	checkLongBreak()
-	updateSettingsLabel()
 
 def updatePomodorosLeft():
 	lblPomodorosLeft.config(text=f"Pomodoros left for long break: {4-pomodoro_count}")
@@ -209,10 +208,6 @@ def checkLongBreak():
 		updatePomodorosLeft()
 	else:
 		lblPomodorosLeft.config(text=f"Current pomodoro has no long break")
-
-def updateSettingsLabel():
-	global lblCurrentSettings
-	lblCurrentSettings.config(text=f"{selectedPomodoro.showSettings()}")
 
 def on_close():
 	if tkinter.messagebox.askokcancel("Quit", "Do you want to quit?"):
@@ -271,7 +266,6 @@ lblCurrentState = tkinter.Label(window, text=f"Pomodoro")
 lblTimeLeft = tkinter.Label(window, text=f"{time.strftime('%M:%S', time.gmtime(selectedPomodoro.minutes*60))}", font=("Calibri", 30))
 lblPomodorosLeft = tkinter.Label(window, text=f"Pomodoros left for long break: {4-pomodoro_count}")
 lblNotifications = tkinter.Label(window, text="")
-lblCurrentSettings = tkinter.Label(window, text=f"{selectedPomodoro.showSettings()}")
 
 #Button
 btnStart = tkinter.ttk.Button(window, text="Start", command=startClock)
@@ -287,7 +281,6 @@ lblTimeLeft.grid(row=0, column=0, columnspan=2)
 lblCurrentState.grid(row=3, column=0, columnspan=2)
 lblPomodorosLeft.grid(row=4, column=0, columnspan=2)
 lblNotifications.grid(row=5, column=0, columnspan=2)
-lblCurrentSettings.grid(row=7, column=0, columnspan=2)
 
 #Button
 btnStart.grid(row=1, column=0, padx=31, ipadx=31)
