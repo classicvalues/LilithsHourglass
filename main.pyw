@@ -5,6 +5,21 @@ import tkinter.ttk
 import threading
 import tkinter.messagebox
 
+'''
+#Colors
+224, 232, 235 blue light / solitude
+#e0e8eb
+
+6, 161, 146 blue like green / persian green
+#06a192
+
+225, 161, 159 beige like / Shilo
+#e1a19f
+
+31, 42, 51 dark blue / Black pearl
+#1f2a33
+'''
+
 #Constant variables
 height = 400
 width = 400
