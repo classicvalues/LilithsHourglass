@@ -20,6 +20,11 @@ import tkinter.messagebox
 #1f2a33
 '''
 
+solitude = "#e0e8eb"
+persian_green = "#06a192"
+shilo = "#e1a19f"
+black_pearl = "#1f2a33"
+
 #Constant variables
 height = 400
 width = 400
