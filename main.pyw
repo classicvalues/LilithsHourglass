@@ -258,7 +258,7 @@ window.title("Lilith's Hourglass")
 window.geometry(f"{width}x{height}+{screen_position_width}+{screen_position_height}")
 window.maxsize(width, height)
 window.minsize(width, height)
-
+window.configure(bg=persian_green)
 #Icon Settings
 icon = tkinter.PhotoImage(file = "Icon/sandclock.png")
 window.iconphoto(False, icon)
@@ -266,10 +266,10 @@ window.iconphoto(False, icon)
 #GUI Widgets
 #Widget Creation
 #Label
-lblCurrentState = tkinter.Label(window, text=f"Pomodoro", font=("Calibri", 15))
-lblTimeLeft = tkinter.Label(window, text=f"{time.strftime('%M:%S', time.gmtime(selectedPomodoro.minutes*60))}", font=("Calibri", 50))
-lblPomodorosLeft = tkinter.Label(window, text=f"Pomodoros left for long break: {4-pomodoro_count}", font=("Calibri"))
-lblNotifications = tkinter.Label(window, text="")
+lblCurrentState = tkinter.Label(window, text=f"Pomodoro", font=("Calibri", 15), fg=shilo, bg=persian_green)
+lblTimeLeft = tkinter.Label(window, text=f"{time.strftime('%M:%S', time.gmtime(selectedPomodoro.minutes*60))}", font=("Calibri", 50), fg=shilo, bg=persian_green)
+lblPomodorosLeft = tkinter.Label(window, text=f"Pomodoros left for long break: {4-pomodoro_count}", font=("Calibri"), fg=shilo, bg=persian_green)
+lblNotifications = tkinter.Label(window, text="", fg=shilo, bg=persian_green)
 
 #Button
 btnStart = tkinter.ttk.Button(window, text="Start", command=startClock)
