@@ -260,6 +260,10 @@ window.maxsize(width, height)
 window.minsize(width, height)
 window.configure(bg=persian_green)
 
+#Style settings
+style = tkinter.ttk.Style()
+style.configure("TButton", background=persian_green)
+
 #Icon Settings
 icon = tkinter.PhotoImage(file = "Icon/sandclock.png")
 window.iconphoto(False, icon)
