@@ -259,6 +259,7 @@ window.geometry(f"{width}x{height}+{screen_position_width}+{screen_position_heig
 window.maxsize(width, height)
 window.minsize(width, height)
 window.configure(bg=persian_green)
+
 #Icon Settings
 icon = tkinter.PhotoImage(file = "Icon/sandclock.png")
 window.iconphoto(False, icon)
