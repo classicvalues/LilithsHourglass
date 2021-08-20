@@ -5,6 +5,26 @@ import tkinter.ttk
 import threading
 import tkinter.messagebox
 
+'''
+#Colors
+224, 232, 235 blue light / solitude
+#e0e8eb
+
+6, 161, 146 blue like green / persian green
+#06a192
+
+225, 161, 159 beige like / Shilo
+#e1a19f
+
+31, 42, 51 dark blue / Black pearl
+#1f2a33
+'''
+
+solitude = "#e0e8eb"
+persian_green = "#06a192"
+shilo = "#e1a19f"
+black_pearl = "#1f2a33"
+
 #Constant variables
 height = 400
 width = 400
@@ -51,20 +71,7 @@ def play(sound):
 	'''
 	Function that makes the sound when pomodoros and breaks are started or finished
 	'''
-	soundFilePath=''
-	if differentSound.get() == 1:
-		if sound == "pomodoro":
-			soundFilePath ="sounds/finish.wav" #pomodoro sound
-		elif sound == "break":
-			soundFilePath = "sounds/bfinish.wav" #break sound
-		elif sound == "pStart":
-			soundFilePath = "sounds/start.wav" #pomodoro start sound
-		elif sound == "bStart":
-			soundFilePath = "sounds/bstart.wav" #break start sound
-	elif differentSound.get() == 0:
-		soundFilePath = "sounds/bell.wav"
-
-	playsound(soundFilePath, False)
+	playsound("sounds/bell.wav", False)
 
 #Pomodoro functions
 def clock(pomo):
@@ -127,7 +134,7 @@ def clock(pomo):
 	global lblCurrentState
 	btnStart["state"] = "active"
 	btnPomodoroChange["state"] = "active"
-	lblCurrentState.config(text=f"Currently on a break? {isBreak}")
+	update_state()
 
 def showTime(time_left):
 	global selectedPomodoro
@@ -199,7 +206,6 @@ def pomoSwitch():
 
 	resetClock()
 	checkLongBreak()
-	updateSettingsLabel()
 
 def updatePomodorosLeft():
 	lblPomodorosLeft.config(text=f"Pomodoros left for long break: {4-pomodoro_count}")
@@ -210,13 +216,21 @@ def checkLongBreak():
 	else:
 		lblPomodorosLeft.config(text=f"Current pomodoro has no long break")
 
-def updateSettingsLabel():
-	global lblCurrentSettings
-	lblCurrentSettings.config(text=f"{selectedPomodoro.showSettings()}")
-
 def on_close():
 	if tkinter.messagebox.askokcancel("Quit", "Do you want to quit?"):
 		window.destroy()
+
+def update_state():
+	current_state = ""
+	if isBreak and pomodoro_count == 4:
+		current_state = "Long Break"
+	elif isBreak and pomodoro_count != 4:
+		current_state = "Break"
+	elif isBreak == False:
+		current_state = "Pomodoro"
+
+
+	lblCurrentState.config(text=current_state)
 
 #Program start functions
 selectedPomodoro = pomodoroDefault #Select the pomodoro that's being used
@@ -244,45 +258,39 @@ window.title("Lilith's Hourglass")
 window.geometry(f"{width}x{height}+{screen_position_width}+{screen_position_height}")
 window.maxsize(width, height)
 window.minsize(width, height)
+window.configure(bg=persian_green)
+
+#Style settings
+style = tkinter.ttk.Style()
+style.configure("TButton", background=persian_green)
 
 #Icon Settings
 icon = tkinter.PhotoImage(file = "Icon/sandclock.png")
 window.iconphoto(False, icon)
 
-#Checkbox variable
-differentSound = tkinter.IntVar()
-
 #GUI Widgets
 #Widget Creation
 #Label
-lblCurrentState = tkinter.Label(window, text=f"Currently on a break? {isBreak}")
-lblTimeLeft = tkinter.Label(window, text=f"{time.strftime('%M:%S', time.gmtime(selectedPomodoro.minutes*60))}", font=("Calibri", 30))
-lblPomodorosLeft = tkinter.Label(window, text=f"Pomodoros left for long break: {4-pomodoro_count}")
-lblNotifications = tkinter.Label(window, text="")
-lblCurrentSettings = tkinter.Label(window, text=f"{selectedPomodoro.showSettings()}")
+lblCurrentState = tkinter.Label(window, text=f"Pomodoro", font=("Calibri", 15), fg=shilo, bg=persian_green)
+lblTimeLeft = tkinter.Label(window, text=f"{time.strftime('%M:%S', time.gmtime(selectedPomodoro.minutes*60))}", font=("Calibri", 50), fg=shilo, bg=persian_green)
+lblPomodorosLeft = tkinter.Label(window, text=f"Pomodoros left for long break: {4-pomodoro_count}", font=("Calibri"), fg=shilo, bg=persian_green)
+lblNotifications = tkinter.Label(window, text="", fg=shilo, bg=persian_green)
 
 #Button
 btnStart = tkinter.ttk.Button(window, text="Start", command=startClock)
 btnStop = tkinter.ttk.Button(window, text="Stop", command=stopClock)
 btnPomodoroChange = tkinter.ttk.Button(window, text=f"{selectedPomodoro.name}", command=pomoSwitch)
 
-#Checkbox
-cbDifferentSound = tkinter.ttk.Checkbutton(window, variable=differentSound, text="Use differents sound")
-
 #Widget Placement
 #Label
 lblTimeLeft.grid(row=0, column=0, columnspan=2)
-lblCurrentState.grid(row=3, column=0, columnspan=2)
-lblPomodorosLeft.grid(row=4, column=0, columnspan=2)
-lblNotifications.grid(row=5, column=0, columnspan=2)
-lblCurrentSettings.grid(row=7, column=0, columnspan=2)
+lblCurrentState.grid(row=1, column=0, columnspan=2)
+lblPomodorosLeft.grid(row=2, column=0, columnspan=2)
+lblNotifications.grid(row=3, column=0, columnspan=2, pady=(0, 175))
 
 #Button
-btnStart.grid(row=1, column=0, padx=31, ipadx=31)
-btnStop.grid(row=1, column=1, padx=31, ipadx=31)
-btnPomodoroChange.grid(row=2, column=0, columnspan=2, ipadx=131)
-
-#Checkbox
-cbDifferentSound.grid(row=6, column=0, columnspan=2, padx=131)
+btnStart.grid(row=4, column=0, padx=31, ipadx=31)
+btnStop.grid(row=4, column=1, padx=31, ipadx=31)
+btnPomodoroChange.grid(row=5, column=0, columnspan=2, ipadx=131)
 
 window.mainloop()
